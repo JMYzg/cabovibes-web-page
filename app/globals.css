@@ -7,7 +7,6 @@
   /* Colors */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-  --link-foreground: oklch(0.145 0 0 / 30%);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -56,19 +55,18 @@
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
-  --link-foreground: oklch(0.985 0 0 / 30%);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0 / 10%);
+  --popover-foreground: oklch(0.985 0 0 / 10%);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: oklch(0 0 0 / 0%); /* oklch(0.269 0 0) */
+  --accent-foreground: oklch(0.985 0 0 / 30%);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
@@ -93,7 +91,6 @@
   /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-link-foreground: var(--link-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -125,7 +122,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-    /* Radius */
+  /* Radius */
+  --radius-xs: calc(var(--radius) - 18px);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -149,7 +147,7 @@
   }
 
   body {
-    @apply flex flex-col bg-background text-foreground px-0 py-0 lg:py-[0.625rem] items-center gap-[0.625rem];
+    @apply flex flex-col bg-background text-foreground items-center gap-[0.625rem];
   }
 
   h1 {
@@ -187,7 +185,7 @@
 
 @layer components {
   .navbar {
-    @apply flex h-14 px-10 py-4 justify-between items-center flex-1 rounded-none lg:rounded-[var(--radius-lg)];
+    @apply fixed top-0 left-0 right-0 lg:left-[8.75rem] lg:right-[8.75rem] lg:top-[0.625rem] flex h-14 px-10 py-4 justify-between items-center rounded-none lg:rounded-[var(--radius-lg)];
   }
 }
 
