@@ -9,9 +9,13 @@ import {
   NavigationMenuContent,
 } from "./ui/navigation-menu";
 
+import { Button } from "./ui/button";
+
+import { Input } from "./ui/input";
+
 import { ShoppingCart, Globe, Fish, Sunset, Ship } from "lucide-react";
 
-const NavLinks = [
+const navLinks = [
   {
     href: "/about",
     label: "About",
@@ -22,34 +26,43 @@ const NavLinks = [
   },
 ];
 
-const TourItems = [
+const serviceItems = [
   {
     href: "/tours/sport-fishing",
     label: "Sport Fishing",
-    icon: <Fish className="size-8" />,
+    icon: <Fish />,
   },
   {
     href: "/tours/sunset-ballena",
     label: "Sunset & Ballena",
-    icon: <Sunset className="size-8" />,
+    icon: <Sunset />,
   },
   {
     href: "/tours/yacht-chartering",
     label: "Yacht Chartering",
-    icon: <Ship className="size-8" />,
+    icon: <Ship />,
   },
 ];
 
 function Navbar() {
   return (
     <nav>
-      <NavigationMenu>
+      <NavigationMenu className="flex">
         <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href={"/"} className="flex">
+                <div className="h-4 w-4 bg-muted"></div>
+                <div className="">Cabovibes</div>
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem></NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Tours</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-[175px]">
-                {TourItems.map((item) => (
+                {serviceItems.map((item) => (
                   <li key={item.href}>
                     <NavigationMenuLink asChild>
                       <Link
@@ -58,9 +71,7 @@ function Navbar() {
                       >
                         <div>{item.icon}</div>
                         <div>
-                          <div className="font-medium text-muted-foreground">
-                            {item.label}
-                          </div>
+                          <div>{item.label}</div>
                         </div>
                       </Link>
                     </NavigationMenuLink>
@@ -69,7 +80,7 @@ function Navbar() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          {NavLinks.map((link) => {
+          {navLinks.map((link) => {
             return (
               <NavigationMenuItem key={link.href}>
                 <NavigationMenuLink
@@ -82,10 +93,18 @@ function Navbar() {
             );
           })}
           <NavigationMenuItem>
-            <div className=""></div>
+            <div className="h-[1.4375rem] w-0.5 rounded-full bg-muted" />
           </NavigationMenuItem>
-          <NavigationMenuItem></NavigationMenuItem>
-          <NavigationMenuItem></NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button variant={"ghost"}>
+              <Globe />
+            </Button>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Button variant={"ghost"}>
+              <ShoppingCart />
+            </Button>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </nav>
