@@ -11,9 +11,14 @@ import {
 
 import { Button } from "./ui/button";
 
-import { Input } from "./ui/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "./ui/input-group";
 
-import { ShoppingCart, Globe, Fish, Sunset, Ship } from "lucide-react";
+import { Fish, Sunset, Ship, Search, ShoppingCart, Globe } from "lucide-react";
 
 const navLinks = [
   {
@@ -46,18 +51,28 @@ const serviceItems = [
 
 function Navbar() {
   return (
-    <nav>
-      <NavigationMenu className="flex">
-        <NavigationMenuList>
+    <nav className="flex p-4 justify-center">
+      <NavigationMenu className="grow">
+        <NavigationMenuList className="flex">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href={"/"} className="flex">
+              <Link href={"/"} className="flex flex-row items-center">
                 <div className="h-4 w-4 bg-muted"></div>
-                <div className="">Cabovibes</div>
+                <div className="font-medium">Cabovibes</div>
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem></NavigationMenuItem>
+          <NavigationMenuItem className="grow">
+            <InputGroup>
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton>Search</InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Tours</NavigationMenuTrigger>
             <NavigationMenuContent>
