@@ -24,16 +24,8 @@ const navLinks = [
 
 const serviceItems = [
   { href: "/tours/sport-fishing", label: "Sport Fishing", icon: <Fish /> },
-  {
-    href: "/tours/sunset-ballena",
-    label: "Sunset & Ballena",
-    icon: <Sunset />,
-  },
-  {
-    href: "/tours/yacht-chartering",
-    label: "Yacht Chartering",
-    icon: <Ship />,
-  },
+  { href: "/tours/sunset-ballena", label: "Sunset & Ballena", icon: <Sunset /> },
+  { href: "/tours/yacht-chartering", label: "Yacht Chartering", icon: <Ship /> },
 ];
 
 function Navbar() {
@@ -71,14 +63,11 @@ function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Tours</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="w-[175px]">
+              <ul className="w-max">
                 {serviceItems.map((item) => (
                   <li key={item.href}>
                     <NavigationMenuLink asChild>
-                      <Link
-                        href={item.href}
-                        className="flex flex-row items-center gap-2"
-                      >
+                      <Link href={item.href} className="flex flex-row items-center gap-2">
                         {item.icon}
                         <span>{item.label}</span>
                       </Link>
@@ -92,10 +81,7 @@ function Navbar() {
           {/* About & Contact Links */}
           {navLinks.map((link) => (
             <NavigationMenuItem key={link.href}>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
+              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                 <Link href={link.href}>{link.label}</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
